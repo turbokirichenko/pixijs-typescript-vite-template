@@ -1,0 +1,22 @@
+{
+  "name": "pixijs-typescript-vite-template",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0"
+  },
+  "dependencies": {
+    "@pixi/layers": "^2.0.1",
+    "@pixi/lights": "^4.0.0",
+    "@pixi/sound": "^5.1.0",
+    "pixi.js": "^7.1.4",
+    "tweedle.js": "^2.0.1"
+  }
+}
