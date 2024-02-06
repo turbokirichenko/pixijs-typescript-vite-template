@@ -1,5 +1,5 @@
 import { Container, Sprite } from 'pixi.js';
-import { IScene } from '../shared/scene-manager';
+import { IScene } from '../../app/interfaces';
 
 export class GameScene extends Container implements IScene {
     //you can  remove all of this variable

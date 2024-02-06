@@ -1,8 +1,9 @@
 import { Container, Assets } from 'pixi.js'
 import { LoadingBarContainer } from '../containers/loading-bar-container';
-import { SceneManager, IScene } from '../shared/scene-manager';
+import { SceneManager} from '../../app/scene-manager';
+import { IScene } from '../../app/interfaces';
 import { GameScene } from './game-scene';
-import { manifest } from '../shared/manifest';
+import { manifest } from '../../shared/config/manifest';
 import { sound } from "@pixi/sound";
 
 export class LoaderScene extends Container implements IScene {
@@ -15,7 +16,7 @@ export class LoaderScene extends Container implements IScene {
         this._loadingBar = new LoadingBarContainer(loaderBarWidth, SceneManager.width, SceneManager.height);
         
         this.addChild(this._loadingBar);
-        this.initLoader().then(() => {
+        this.initLoader().then(async () => {
             this.loaded();
         });
     }

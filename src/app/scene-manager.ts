@@ -1,11 +1,12 @@
-import { Application, DisplayObject } from "pixi.js";
+import { Application } from "pixi.js";
 import { Stage, Layer } from "@pixi/layers";
 import { diffuseGroup, normalGroup, lightGroup } from "@pixi/lights";
+import { IApplication, IScene, ISceneManagerConfig } from "./interfaces";
 
 export class SceneManager {
     //class is almost will be static
     private constructor() {};
-    private static _app: Application;
+    private static _app: IApplication;
     private static _currentScene: IScene;
 
     public static get width() {
@@ -16,13 +17,13 @@ export class SceneManager {
         return Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
     }
 
-    public static init(background: number): void {
+    public static init(config: ISceneManagerConfig): void {
         SceneManager._app = new Application({
             view: document.getElementById("pixi-screen") as HTMLCanvasElement,
             resizeTo: window,
 	        resolution: window.devicePixelRatio || 1,
             autoDensity: true,
-            backgroundColor: background,
+            backgroundColor: config.fill,
         });
 
         SceneManager._app.stage = new Stage();
@@ -58,10 +59,4 @@ export class SceneManager {
             SceneManager._currentScene.resize(SceneManager.width, SceneManager.height);
         }
     }
-}
-
-export interface IScene extends DisplayObject {
-    update(framesPassed: number): void;
-    // we added the resize method to the interface
-    resize(screenWidth: number, screenHeight: number): void;
 }
