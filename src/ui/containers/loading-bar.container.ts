@@ -1,4 +1,5 @@
-import { Container, Graphics } from "pixi.js";
+import { Graphics, Container } from "pixi.js";
+// import { PixiContainer } from "../../plugins/engine";
 
 export class LoadingBarContainer extends Container {
     private _loaderBar: Container;

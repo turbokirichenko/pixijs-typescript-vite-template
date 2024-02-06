@@ -4,5 +4,5 @@ import { FILL_COLOR } from '../shared/constant/constants';
 
 SceneManager.init({ fill: FILL_COLOR });
 
-const loady: LoaderScene = new LoaderScene();
+const loady: LoaderScene = new LoaderScene(SceneManager.width, SceneManager.height);
 SceneManager.changeScene(loady);

@@ -1,24 +1,27 @@
-import { Container, Assets } from 'pixi.js'
-import { LoadingBarContainer } from '../containers/loading-bar-container';
-import { SceneManager} from '../../app/scene-manager';
+import { Assets, Container } from 'pixi.js'
+import { LoadingBarContainer } from '../containers/loading-bar.container';
 import { IScene } from '../../app/interfaces';
-import { GameScene } from './game-scene';
 import { manifest } from '../../shared/config/manifest';
-import { sound } from "@pixi/sound";
 
 export class LoaderScene extends Container implements IScene {
     private _loadingBar: LoadingBarContainer;
+    private _isLoaded: boolean;
 
-    constructor() {
+    constructor(width: number, height: number) {
         super();
 
         const loaderBarWidth = 280;
-        this._loadingBar = new LoadingBarContainer(loaderBarWidth, SceneManager.width, SceneManager.height);
+        this._isLoaded = false;
+        this._loadingBar = new LoadingBarContainer(loaderBarWidth, width, height);
         
         this.addChild(this._loadingBar);
         this.initLoader().then(async () => {
             this.loaded();
         });
+    }
+
+    get isLoaded(): boolean {
+        return this._isLoaded;
     }
 
     async initLoader(): Promise<void> {
@@ -32,8 +35,7 @@ export class LoaderScene extends Container implements IScene {
     }
 
     private loaded(): void {
-        sound.play("forklift-effect");
-        SceneManager.changeScene(new GameScene(SceneManager.width, SceneManager.height))
+        this._isLoaded = true;
     }
 
     update(framesPassed: number): void {
@@ -42,5 +44,9 @@ export class LoaderScene extends Container implements IScene {
 
     resize(parentWidth: number, parentHeight: number): void {
         //...
+    }
+
+    destroy(): void {
+        
     }
 }
