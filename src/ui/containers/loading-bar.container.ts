@@ -17,7 +17,7 @@ export class LoadingBarContainer extends Container {
 
         const lineWidth = 4;
         const lineColor = 0x000000;
-        const lineOpacity = 0;
+        const lineOpacity = 1;
         this._loaderBarBorder.lineStyle(lineWidth, lineColor, lineOpacity);
         
         const barPosX = 0;
