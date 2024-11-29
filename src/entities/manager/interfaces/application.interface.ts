@@ -18,7 +18,7 @@ export interface TickerInterface {
      * @param fn 
      * @param context 
      */
-    add(fn: (framesPassed: number) => void, context?: any): TickerInterface
+    add(fn: (framesPassed: any) => void, context?: any): TickerInterface
 }
 
 export type ResizeCallback = () => void;
@@ -33,15 +33,21 @@ export interface ApplicationInterface {
     /** time ticker
      * 
      */
-    ticker: TickerInterface;
+    ticker?: TickerInterface;
 
     /** stage of scene
      * 
      */
-    stage: StageInterface;
+    stage?: StageInterface;
 
-    /**
+    /** panel with emitter
      * 
      */
     panel: PanelInterface;
+
+    /** set initial state of the application
+     * 
+     * @returns 
+     */
+    init: <T = any>(options: T) => Promise<void>
 }
