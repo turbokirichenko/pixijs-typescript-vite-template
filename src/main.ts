@@ -1,4 +1,5 @@
 import './style.css';
+import '@pixi/gif';
 import { App } from './app';
 import { FILL_COLOR } from './shared/constant/constants';
 import { Manager } from './entities/manager';

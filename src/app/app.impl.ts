@@ -7,7 +7,7 @@ export class App implements ApplicationInterface {
     stage: StageInterface;
     panel: PanelInterface;
 
-    constructor(options: IPixiApplicationOptions) {
+    constructor(options: Partial<IPixiApplicationOptions>) {
         // create application
         this._app = new PixiApplication(options);
 
