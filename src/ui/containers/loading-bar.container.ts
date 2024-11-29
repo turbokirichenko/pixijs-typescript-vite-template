@@ -17,12 +17,11 @@ export class LoadingBarContainer extends Container {
 
         const lineWidth = 4;
         const lineColor = 0x000000;
-        const lineOpacity = 1;
-        this._loaderBarBorder.lineStyle(lineWidth, lineColor, lineOpacity);
-        
         const barPosX = 0;
         const barPosY = 0;
-        this._loaderBarBorder.drawRect(barPosX, barPosY, this._barWidth + 6, this._barHeight);
+        this._loaderBarBorder
+            .rect(barPosX, barPosY, this._barWidth + 6, this._barHeight)
+            .stroke({ width: lineWidth, color: lineColor })
 
         this._loaderBar = new Container();
         this._loaderBar.addChild(this._loaderBarBorder);
@@ -64,14 +63,14 @@ export class LoadingBarContainer extends Container {
 
         // fill loading bar
         for (let i = 0; i < percentLines; ++i) {
-            rect.beginFill(0xffff00 - i*0x001100, 1);
-            rect.drawRect(
-                rectPositionX(i), 
-                rectPositionY, 
-                rectWidth, 
-                rectHeight
-            );
-            rect.endFill();
+            rect
+                .rect(
+                    rectPositionX(i), 
+                    rectPositionY, 
+                    rectWidth, 
+                    rectHeight
+                )
+                .fill(0xffff00 - i*0x001100);
         }
         return rect;
     }

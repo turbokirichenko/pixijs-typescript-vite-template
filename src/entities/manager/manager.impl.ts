@@ -17,18 +17,18 @@ export class ManagerImpl {
     static init(app: ApplicationInterface): void {
         ManagerImpl._app = app;
         ManagerImpl._app.panel.resize(ManagerImpl.resize);
-        ManagerImpl._app.ticker.add(ManagerImpl.update);
+        ManagerImpl._app.ticker?.add(ManagerImpl.update);
     }
 
     static changeScene(newScene: SceneInterface): void {
         if (ManagerImpl._currentScene) {
-            ManagerImpl._app?.stage.removeChild(ManagerImpl._currentScene);
+            ManagerImpl._app?.stage?.removeChild(ManagerImpl._currentScene);
             ManagerImpl._currentScene.destroy();
         }
 
         // Add the new one
         ManagerImpl._currentScene = newScene;
-        ManagerImpl._app?.stage.addChild(ManagerImpl._currentScene);
+        ManagerImpl._app?.stage?.addChild(ManagerImpl._currentScene);
     }
 
     private static update(framesPassed: number): void {

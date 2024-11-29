@@ -14,7 +14,8 @@ export const options: LoaderOptions = {
             {
                 name: "sound",
                 assets: {
-                    "forklift-effect": "sound/forklift-effect.wav"
+                    "forklift-effect": "sound/forklift-effect.wav",
+                    "sound-gif": "sound/sound-gif.gif"
                 }
             }
         ]

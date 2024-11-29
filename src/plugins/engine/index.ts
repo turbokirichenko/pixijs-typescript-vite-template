@@ -1,19 +1,15 @@
-import { Stage } from '@pixi/layers';
-import { Container, Sprite, Application, Texture, BaseTexture, IApplicationOptions, Assets } from 'pixi.js';
-import { Layer } from '@pixi/layers';
-import { diffuseGroup, normalGroup, lightGroup } from '@pixi/lights';
+import { Container, Sprite, Application, Texture, ApplicationOptions, Assets, BasisTexture, Graphics, Text } from 'pixi.js';
+import { SoundLibrary, Options } from '@pixi/sound';
 
-export class PixiContainer extends Container {};
-export class PixiSprite extends Sprite {};
-export class PixiApplication extends Application {};
-export class PixiTexture extends Texture {};
-export class PixiBaseTexture extends BaseTexture {};
-export class PixiStage extends Stage {};
-export class PixiLayer extends Layer {};
-export interface IPixiApplicationOptions extends IApplicationOptions {};
-export const PixiLightGroups = {
-    diffuseGroup,
-    normalGroup,
-    lightGroup
-};
+export { Container as PixiContainer };
+export { Sprite as PixiSprite };
+export { Application as PixiApplication };
+export { Texture as PixiTexture };
+export { Graphics as PixiGraphics };
+export type { BasisTexture as PixiBaseTexture };
+export type { ApplicationOptions as IPixiApplicationOptions };
 export { Assets as PixiAssets };
+export { Text as PixiText };
+
+export { SoundLibrary as PixiSoundLibrary };
+export type { Options as PixiSoundOptions };
