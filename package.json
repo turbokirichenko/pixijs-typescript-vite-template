@@ -1,7 +1,7 @@
 {
   "name": "pixijs-typescript-vite-template",
   "private": true,
-  "version": "0.0.7",
+  "version": "0.1.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,14 +9,14 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "typescript": "^4.9.3",
-    "vite": "^4.1.0"
+    "typescript": "^5.7.2",
+    "vite": "^6.0.1"
   },
   "dependencies": {
-    "@pixi/layers": "^2.0.1",
-    "@pixi/lights": "^4.0.0",
-    "@pixi/sound": "^5.1.0",
-    "pixi.js": "^7.1.4",
-    "tweedle.js": "^2.0.1"
+    "@pixi/gif": "^3.0.1",
+    "@pixi/layers": "^2.1.0",
+    "@pixi/lights": "^4.1.0",
+    "@pixi/sound": "^6.0.1",
+    "pixi.js": "^8.6.2"
   }
 }
