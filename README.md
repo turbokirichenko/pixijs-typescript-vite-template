@@ -8,7 +8,7 @@
 :white_check_mark: vanilla typescript \
 :white_check_mark: for game development \
 
-### Files
+### Folder Structure
 
 ```sh
 \public # for static content
