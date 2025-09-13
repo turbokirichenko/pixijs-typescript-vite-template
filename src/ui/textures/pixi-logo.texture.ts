@@ -1,8 +1,8 @@
-import { PixiTexture, PixiBaseTexture } from "../../plugins/engine";
+import { PixiTexture } from "../../plugins/engine";
 
 export class PixiLogoTexture extends PixiTexture {
     constructor(source: string) {
-        const baseTexture = PixiBaseTexture.from(source);
+        const baseTexture = PixiTexture.from(source);
         super(baseTexture);
     }
 }
