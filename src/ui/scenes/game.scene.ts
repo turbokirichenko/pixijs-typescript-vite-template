@@ -68,8 +68,7 @@ export class GameScene extends PixiContainer implements SceneInterface {
         this.addChild(this._viteLogo, this._tsLogo, this._pixiLogo, this._pixiText, this._soundLogo);
     }
 
-    update(framesPassed: number): void {
-        framesPassed = 0;
+    update(_framesPassed: number): void {
         this._soundLogo.visible = this._sound.isPlaying() ? true : false;
     }
 
