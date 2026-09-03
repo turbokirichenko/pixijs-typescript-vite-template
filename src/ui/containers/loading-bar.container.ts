@@ -1,5 +1,4 @@
-import { Graphics, Container } from "pixi.js";
-// import { PixiContainer } from "../../plugins/engine";
+import { Graphics, Container, Text } from "pixi.js";
 
 export class LoadingBarContainer extends Container {
     private _loaderBar: Container;
@@ -7,6 +6,7 @@ export class LoadingBarContainer extends Container {
     private _loaderProgress?: Graphics;
     private _barWidth: number;
     private _barHeight: number;
+    private _errorText?: Text;
 
     constructor(barWidth: number, parentWidth: number, parentHeight: number) {
         super();
@@ -42,6 +42,26 @@ export class LoadingBarContainer extends Container {
     resize(width: number, height: number) {
         this._loaderBar.position.x = (width - this._loaderBar.width) / 2;
         this._loaderBar.position.y = (height - this._loaderBar.height) / 2;
+        this._errorText?.position.set(width / 2, height / 2 + this._barHeight);
+    }
+
+    showError(): void {
+        if (this._errorText) {
+            return;
+        }
+
+        this._errorText = new Text({
+            text: 'Failed to load assets',
+            style: {
+                fontFamily: 'Arial',
+                fontSize: 18,
+                fill: 0xff0000,
+                align: 'center'
+            }
+        });
+        this._errorText.anchor.set(0.5);
+        this._errorText.position.set(this.parent?.width ? this.parent.width / 2 : 0, this._barHeight);
+        this.addChild(this._errorText);
     }
 
     /**

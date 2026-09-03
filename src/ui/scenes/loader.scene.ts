@@ -19,6 +19,10 @@ export class LoaderScene extends PixiContainer implements SceneInterface {
         this._loadingBar.scaleProgress(progress);
     }
 
+    errorCallback(): void {
+        this._loadingBar.showError();
+    }
+
     update(_framesPassed: number): void {}
     resize(screenWidth: number, screenHeight: number): void { 
         this.width = screenWidth; 

@@ -17,12 +17,12 @@ export class LoaderImpl implements LoaderInterface {
         this._isLoaded = false;
     }
 
-    async download(data: LoaderOptions, onLoading: LoadingCallback): Promise<any> {
+    async download(data: LoaderOptions, onLoading: LoadingCallback): Promise<void> {
         if (this._isLoaded) {
             return;
         }
         if (!data.manifest) {
-            return;
+            throw new Error('Asset manifest is not configured');
         }
         await this._assets.init(data);
         const ids = data.manifest.bundles.map(bundle => bundle.name);

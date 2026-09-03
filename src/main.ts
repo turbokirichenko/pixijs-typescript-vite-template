@@ -1,5 +1,4 @@
 import './style.css';
-import '@pixi/gif';
 import { App } from './app';
 import { FILL_COLOR } from './shared/constant/constants';
 import { Manager } from './entities/manager';
@@ -9,7 +8,7 @@ import { options } from './shared/config/manifest';
 import { LoaderScene } from './ui/scenes/loader.scene';
 import { GameScene } from './ui/scenes/game.scene';
 
-const boostsrap = async () => {
+const bootstrap = async () => {
     const canvas = document.getElementById("pixi-screen") as HTMLCanvasElement;
     const resizeTo = window;
     const resolution = window.devicePixelRatio || 1;
@@ -30,9 +29,15 @@ const boostsrap = async () => {
     const loader = new Loader(PixiAssets);
     const loaderScene = new LoaderScene();
     Manager.changeScene(loaderScene);
-    loader.download(options, loaderScene.progressCallback.bind(loaderScene)).then(() => {
+    try {
+        await loader.download(options, loaderScene.progressCallback.bind(loaderScene));
         Manager.changeScene(new GameScene());
-    });
+    } catch (error) {
+        console.error('Failed to load game assets', error);
+        loaderScene.errorCallback();
+    }
 }
 
-boostsrap();
+bootstrap().catch((error) => {
+    console.error('Failed to bootstrap application', error);
+});

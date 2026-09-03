@@ -18,6 +18,7 @@ export class ManagerImpl {
         ManagerImpl._app = app;
         ManagerImpl._app.panel.resize(ManagerImpl.resize);
         ManagerImpl._app.ticker?.add(ManagerImpl.update);
+        ManagerImpl.resize();
     }
 
     static changeScene(newScene: SceneInterface): void {
@@ -29,6 +30,7 @@ export class ManagerImpl {
         // Add the new one
         ManagerImpl._currentScene = newScene;
         ManagerImpl._app?.stage?.addChild(ManagerImpl._currentScene);
+        ManagerImpl._currentScene.resize(ManagerImpl.width, ManagerImpl.height);
     }
 
     private static update(framesPassed: number): void {
